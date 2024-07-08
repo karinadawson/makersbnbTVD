@@ -18,16 +18,18 @@ pip install -r requirements.txt
 
 pytest -x
 
-6. Run Flask application using command:
+6. Pip install flask-cors
+
+7. Run Flask application using command:
 
 python3 server.py
 
-6. Split the terminal, and cd into client
+8. Split the terminal, and cd into client
 
-7. Install React dependencies using command:
+9. Install React dependencies using command:
 
 npm install
 
-7. Run React application using command:
+10. Run React application using command:
 
 npm run dev
