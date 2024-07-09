@@ -1,7 +1,13 @@
 DROP TABLE IF EXISTS bookings;
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS spaces;
+DROP TABLE IF EXISTS test_table;
 
+
+CREATE TABLE test_table (
+id SERIAL PRIMARY KEY,
+name TEXT
+);
 
 CREATE TABLE bookings (
 id SERIAL PRIMARY KEY,
