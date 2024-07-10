@@ -32,3 +32,4 @@ flask-bcrypt
 python-dotenv
 psycopg2
 flask-session
+flask-cors

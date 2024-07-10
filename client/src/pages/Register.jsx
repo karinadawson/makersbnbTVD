@@ -19,7 +19,8 @@ const Register = () => {
     try {
         const response = await axios.post('http://127.0.0.1:5002/register', formData);
         if(response.data.succcess){
-          console.log('Registration successful:', response.data);
+          // console.log('Registration successful:', response.data);
+          alert("Registration Successful!")
         }
 
       } catch (error) {
@@ -54,7 +55,7 @@ const Register = () => {
         <div className="form-group">
           <label htmlFor="confirmPassword">Confirm password</label>
           <input
-            type="confirmPassword"
+            type="password"
             id="confirmPassword"
             name="confirmPassword"
             value={formData.confirmPassword}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios"
 
 function Login() {
   const navigateTo = useNavigate();
@@ -14,26 +15,18 @@ function Login() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
+    
 
-    // const response = await fetch('http://localhost:5002/login', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({ username, password }),
-    // });
+    try {
+      const response = await axios.post('http://127.0.0.1:5002/login', formData);
+      if(response.data.succcess){
+        console.log('Login successful:', response.data);
+        alert("Login Successful!")
+      }
 
-    // if (!response.ok) {
-    //   setErrorMessage('Login failed. Please check your credentials.');
-    //   return;
-    // }
-
-    // const data = await response.json();
-
-    // Handle successful login (e.g., store token, redirect)
-    // console.log('Login successful:', data); // Replace with your logic
-
-    // setUsername('');
-    // setPassword('');
+    } catch (error) {
+      console.error('Login error:', error);
+    }
   };
 
   return (

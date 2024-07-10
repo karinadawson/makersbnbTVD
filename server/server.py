@@ -13,7 +13,7 @@ app.config.from_object(ApplicationConfig)
 
 bcrypt = Bcrypt(app)
 cors = CORS(app, origins='*')
-# server_session = Session(app)
+# server_session = session(app)
 
 db.init_app(app)
 
@@ -50,7 +50,7 @@ def user_register():
         if user_exists:
              return jsonify({"error": "User already exists"}), 409
         
-        hashed_password = bcrypt.generate_password_hash(password)
+        hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
         new_user = User(username=username, password=hashed_password)
         # print(new_user)
 
@@ -61,7 +61,10 @@ def user_register():
         # Logged in user session
         session["user"] = username
 
-        return {"success": "new user registered"}
+        return jsonify({
+          "id": new_user.id,
+          "username": new_user.username
+     })
 
 
 
@@ -69,28 +72,33 @@ def user_register():
 
 @app.route('/login', methods=['POST'])
 def user_login():
-        data = request.json
-        username = data['username']
-        password = data['password']
+        # Following lines are accessing json data following input submission so that we can process them
+        username = request.json['username']
+        password = request.json['password'].encode("utf-8")
+        user = User.query.filter_by(username = username).first()
+
+        if user is None:
+             return jsonify({"Error": "User could not be found."}), 404
+        
+        if not bcrypt.check_password_hash(user.password, password):
+             return jsonify({"Error": "Password incorrect"}), 401
+        
+        # below refs the cookie session/browser session/server-side authorisation
         session["user"] = username
-        return  {"success": "true"}
+        
+        return jsonify({
+             "id": user.id, 
+             "username": user.username
+        })
 
 
-
-@app.route('/user', methods=['GET'])
-def get_user():
-    if "user" in session:
-        user = session["user"]
-        return user
-    else:
-        if "user" in session:
-            return redirect(url_for("get_user"))
-        return redirect(url_for("user_login"))
     
 @app.route('/logout', methods=['GET'])
 def logout():
     session.pop("user", None)
-    return redirect(url_for("user_login"))
+    return jsonify({
+             "message": "Logout Successful" 
+        })
 
 
 if __name__ == '__main__':
