@@ -23,3 +23,6 @@ class Space(db.Model):
     location = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+
+    def __repr__(self):
+        return f"Space({self.place_name}, {self.location}, {self.description}, {self.price})"

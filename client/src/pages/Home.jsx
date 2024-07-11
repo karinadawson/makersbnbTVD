@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import PaperComp from "../components/Paper"
+import PaperComp from "../components/PaperComp.jsx"
 
 function Home() {
-const navigateTo = useNavigate();
+  const navigateTo = useNavigate();
 
 
 
@@ -10,13 +10,14 @@ const navigateTo = useNavigate();
     <div>
       <div>Home</div>
       <div>
-        <button type="button" onClick={()=> navigateTo('/login')}>Login</button>
-        <button type="button" onClick={()=> navigateTo('/register')}>Register</button>
+        <button type="button" onClick={() => navigateTo('/login')}>Login</button>
+        <button type="button" onClick={() => navigateTo('/register')}>Register</button>
+        <button type="button" onClick={() => navigateTo('/spaces')}>Spaces</button>
 
 
 
 
-      <PaperComp></PaperComp>
+        <PaperComp/>
 
       </div>
     </div>

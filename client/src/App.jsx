@@ -9,6 +9,7 @@ import Login from './pages/Login'
 import Home from './pages/Home';
 import Register from "./pages/Register";
 import Me from "./pages/Me"
+import PaperComp from "./components/PaperComp";
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -36,6 +37,7 @@ function App() {
         <Route path="/me" element={<Me />} /> 
         <Route path="/login" element={<Login />} /> 
         <Route path="/register" element={<Register />}/>
+        <Route path="/spaces" element={<PaperComp />}/>
       </Routes>
     </Router>
     </>

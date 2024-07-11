@@ -137,7 +137,7 @@ def fetch_spaces():
     spaces = Space.query.all()
     #   results = sqlalchemy.select(spaces)
     new_spaces = str(spaces)
-    return new_spaces
+    return jsonify({new_spaces})
      
 
 
