@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import Card from "../components/Card"
+import PaperComp from "../components/Paper"
 
 function Home() {
 const navigateTo = useNavigate();
+
+
 
   return (
     <div>
@@ -14,9 +16,8 @@ const navigateTo = useNavigate();
 
 
 
-      {/* <Card>Hello, world!</Card>
-      <Card>Hello, world!</Card>
-      <Card>Hello, world!</Card> */}
+      <PaperComp></PaperComp>
+
       </div>
     </div>
   );

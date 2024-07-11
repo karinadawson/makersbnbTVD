@@ -131,6 +131,10 @@ def add_space():
           "id": new_space.id,
           "place_name": new_space.place_name
      })
+
+@app.route('/spaces', methods = ['GET'])
+def fetch_spaces():
+      pass
      
 
 
