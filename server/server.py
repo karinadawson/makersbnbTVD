@@ -4,7 +4,8 @@ from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 # from flask_session import Session
 from config import ApplicationConfig
-from lib.models.space import db, Space
+from lib.models.user import db, User
+from lib.models.space import Space
 
 # Create a new Flask app
 app = Flask(__name__)
