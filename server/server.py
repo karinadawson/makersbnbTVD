@@ -5,7 +5,7 @@ from flask_bcrypt import Bcrypt
 # from flask_session import Session
 from config import ApplicationConfig
 from lib.models.user import db, User
-from lib.models.space import Space
+from lib.models.space import db, Space
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -134,7 +134,10 @@ def add_space():
 
 @app.route('/spaces', methods = ['GET'])
 def fetch_spaces():
-      pass
+    spaces = Space.query.all()
+    #   results = sqlalchemy.select(spaces)
+    new_spaces = str(spaces)
+    return new_spaces
      
 
 
