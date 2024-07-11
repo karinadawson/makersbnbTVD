@@ -134,12 +134,20 @@ def add_space():
 
 @app.route('/spaces', methods = ['GET'])
 def fetch_spaces():
+    print("function ran")
     spaces = Space.query.all()
     #   results = sqlalchemy.select(spaces)
-    new_spaces = str(spaces)
-    return jsonify({new_spaces})
-     
+    # new_spaces = str(spaces)
 
+    print(spaces)
+    return jsonify(list(map(map_spaces, spaces)))
+    
+     
+def map_spaces(space):
+      return {
+          "id": space.id,
+          "place_name": space.place_name
+     }
 
 if __name__ == '__main__':
     app.run(debug=True, port=int(os.environ.get('PORT', 5002)))

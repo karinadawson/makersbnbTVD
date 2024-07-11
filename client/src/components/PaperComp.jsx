@@ -12,9 +12,10 @@ const [spacesState, setSpacesState] = useState([])
 
 const fetchSpaces = async () => {
     const response = await axios.get('http://127.0.0.1:5002/spaces');
+    console.log(response)
     if (response.status === 200) {
-      console.log(response)
-      setSpacesState(response.data)
+      setSpacesState(response)
+      console.log(spacesState)
     }
   }
 
@@ -33,11 +34,11 @@ const fetchSpaces = async () => {
 
 return (
   <>
-  <ul>
+  {/* <ul>
     {spacesState.map((value, index) => {
       return <li key={index}>{value}</li>
     })}
-  </ul>
+  </ul> */}
 
     </>
   )
