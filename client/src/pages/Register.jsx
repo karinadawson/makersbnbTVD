@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-  //   const navigateTo = useNavigate();
+    const navigateTo = useNavigate();
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -18,9 +18,13 @@ const Register = () => {
     e.preventDefault();
     try {
         const response = await axios.post('http://127.0.0.1:5002/register', formData);
-        if(response.data.succcess){
+        console.log(response)
+        if(response.status === 200){
+          console.log(response)
           // console.log('Registration successful:', response.data);
-          alert("Registration Successful!")
+
+          navigateTo("/login")
+          // return <Redirect to="/login" />
         }
 
       } catch (error) {

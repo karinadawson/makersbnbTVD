@@ -19,9 +19,9 @@ function Login() {
 
     try {
       const response = await axios.post('http://127.0.0.1:5002/login', formData);
-      if(response.data.succcess){
+      if(response.status === 200){
         console.log('Login successful:', response.data);
-        alert("Login Successful!")
+        navigateTo("/me")
       }
 
     } catch (error) {

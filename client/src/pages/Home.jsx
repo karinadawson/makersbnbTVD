@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Card from "../components/Card"
 
 function Home() {
 const navigateTo = useNavigate();
@@ -8,6 +9,14 @@ const navigateTo = useNavigate();
       <div>Home</div>
       <div>
         <button type="button" onClick={()=> navigateTo('/login')}>Login</button>
+        <button type="button" onClick={()=> navigateTo('/register')}>Register</button>
+
+
+
+
+      {/* <Card>Hello, world!</Card>
+      <Card>Hello, world!</Card>
+      <Card>Hello, world!</Card> */}
       </div>
     </div>
   );

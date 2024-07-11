@@ -9,4 +9,4 @@ class ApplicationConfig:
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
-    SQLALCHEMY_DATABASE_URI = "postgresql://karinadawson:postgres@localhost/makers_bnb_database"
+    SQLALCHEMY_DATABASE_URI = "postgresql://:{postgres_user}@localhost/makers_bnb_database"

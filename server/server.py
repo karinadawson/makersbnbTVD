@@ -4,7 +4,7 @@ from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 # from flask_session import Session
 from config import ApplicationConfig
-from lib.models.user import db, User
+from lib.models.space import db, Space
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -94,11 +94,43 @@ def user_login():
 
     
 @app.route('/logout', methods=['GET'])
-def logout():
+def user_logout():
     session.pop("user", None)
     return jsonify({
              "message": "Logout Successful" 
         })
+
+
+@app.route('/add-space', methods = ['POST'])
+def add_space():
+             
+        place_name = request.json['place_name']
+        location = request.json['location']
+        description = request.json['description']
+        price = request.json['price']
+
+
+        # user_exists = User.query.filter_by(username=username).first() is not None
+       
+        # if user_exists:
+        #      return jsonify({"error": "User already exists"}), 409
+        
+        # hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
+        new_space = Space(place_name=place_name, location=location, description=description, price=price)
+        # print(new_user)
+
+        
+        db.session.add(new_space)
+        db.session.commit()
+
+        # Logged in user session
+        # session["user"] = username
+
+        return jsonify({
+          "id": new_space.id,
+          "place_name": new_space.place_name
+     })
+     
 
 
 if __name__ == '__main__':

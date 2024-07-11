@@ -8,6 +8,7 @@ import './App.css'
 import Login from './pages/Login'
 import Home from './pages/Home';
 import Register from "./pages/Register";
+import Me from "./pages/Me"
 
 function App() {
   // const [count, setCount] = useState(0)
@@ -32,6 +33,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} /> 
+        <Route path="/me" element={<Me />} /> 
         <Route path="/login" element={<Login />} /> 
         <Route path="/register" element={<Register />}/>
       </Routes>
