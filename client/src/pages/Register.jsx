@@ -17,7 +17,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-        const response = await axios.post('http://127.0.0.1:5002/register', formData);
+        const response = await axios.post('http://127.0.0.1:5003/register', formData);
         console.log(response)
         if(response.status === 200){
           console.log(response)
@@ -33,10 +33,11 @@ const Register = () => {
   };
 
   return (
+      <>
     <div>
-      {/* use registerHanlder that sumbits the form and if response is succeful then navigate to login page */}
+      <h1>Register</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-group" style={{ display: "flex", flexDirection: "column" }}>
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -46,7 +47,7 @@ const Register = () => {
             onChange={(e) => handleUpdateFormData("username", e.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group" style={{ display: "flex", flexDirection: "column" }}>
           <label htmlFor="password">Password</label>
           <input
             type="password"
@@ -56,7 +57,7 @@ const Register = () => {
             onChange={(e) => handleUpdateFormData("password", e.target.value)}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group" style={{ display: "flex", flexDirection: "column" }}>
           <label htmlFor="confirmPassword">Confirm password</label>
           <input
             type="password"
@@ -72,8 +73,14 @@ const Register = () => {
         {/* {errorMessage && <p className="error-message">{errorMessage}</p>} */}
       </form>
 
-      {/* <button onClick={() => navigateTo("/login")}>Register</button> */}
+      <div>
+        {" "}
+        <p style={{ color: "orange" }} onClick={() => navigateTo("/login")}>
+          Login{" "}
+        </p>
+      </div>
     </div>
+    </>
   );
 };
 

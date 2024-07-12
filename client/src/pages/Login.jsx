@@ -18,10 +18,10 @@ function Login() {
     
 
     try {
-      const response = await axios.post('http://127.0.0.1:5002/login', formData);
+      const response = await axios.post('http://127.0.0.1:5003/login', formData);
       if(response.status === 200){
         console.log('Login successful:', response.data);
-        navigateTo("/me")
+        navigateTo("/me", {username:response.data.username})
       }
 
     } catch (error) {
@@ -30,8 +30,11 @@ function Login() {
   };
 
   return (
+    <>
+    
+    <h1>Login</h1>
     <form onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="form-group" style={{ display: "flex", flexDirection: "column" }}>
         <label htmlFor="username">Username</label>
         <input
           type="text"
@@ -41,7 +44,7 @@ function Login() {
           onChange={(e) => handleUpdateFormData("username", e.target.value)}
         />
       </div>
-      <div className="form-group">
+      <div className="form-group" style={{ display: "flex", flexDirection: "column" }}>
         <label htmlFor="password">Password</label>
         <input
           type="password"
@@ -55,11 +58,12 @@ function Login() {
       {/* {errorMessage && <p className="error-message">{errorMessage}</p>} */}
       <div>
         {" "}
-        <p style={{ color: "blue" }} onClick={() => navigateTo("/register")}>
-          don&apos;t have account?{" "}
+        <p style={{ color: "orange" }} onClick={() => navigateTo("/register")}>
+          Don&apos;t have account?{" "}
         </p>
       </div>
     </form>
+    </>
   );
 }
 

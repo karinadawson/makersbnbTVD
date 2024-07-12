@@ -5,27 +5,36 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-
-export default function MediaCard() {
-    return (
-      <Card sx={{ maxWidth: 345 }}>
+const CardComponent = ({ title, description, image, price, button1Text, button2Text }) => {
+  return (
+    <Card sx={{ maxWidth: 345 }} style={{ margin: "1em" }}>
+      {image && ( // Conditionally render image if provided
         <CardMedia
           sx={{ height: 140 }}
-          image="client/src/assets/2-bed.jpg"
-          title="green iguana"
+          image={image}
+          title={title} // Use title prop for image title
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            2-bed Apartment
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            Cosy & quiet 2-bed apartment in Central London
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Book</Button>
-          <Button size="small">Details</Button>
-        </CardActions>
-      </Card>
-    );
-  }
+      )}
+
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {title}
+        </Typography>
+        <Typography variant="body2" color="text.secondary">
+          {description}
+        </Typography>
+        <Typography variant="body1" color="text.secondary">
+          £{price} / night
+        </Typography>
+      </CardContent>
+
+      <CardActions>
+        <button style={{ color: "orange" }} size="small">{button1Text}</button>
+        <button size="small">{button2Text}</button>
+      </CardActions>
+
+    </Card>
+  );
+};
+
+export default CardComponent;

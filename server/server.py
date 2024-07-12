@@ -4,8 +4,8 @@ from flask_cors import CORS
 from flask_bcrypt import Bcrypt
 # from flask_session import Session
 from config import ApplicationConfig
-from lib.models.user import db, User
-from lib.models.space import db, Space
+from lib.models.bnbmodels import db, User, Space
+# from lib.models.space import db, Space
 
 # Create a new Flask app
 app = Flask(__name__)
@@ -18,6 +18,8 @@ cors = CORS(app, origins='*')
 
 db.init_app(app)
 
+
+
 with app.app_context():
     db.create_all()
 
@@ -25,7 +27,7 @@ with app.app_context():
 
 @app.route('/me', methods = ['GET'])
 def get_current_user():
-     user_id = session.get("user_id")
+     user_id = session.get("user")
 
      if not user_id:
           return jsonify({"error": "Unauthorised"}), 401
@@ -139,16 +141,19 @@ def fetch_spaces():
     #   results = sqlalchemy.select(spaces)
     # new_spaces = str(spaces)
 
-    print(spaces)
+#     print(spaces)
     return jsonify(list(map(map_spaces, spaces)))
     
      
 def map_spaces(space):
       return {
           "id": space.id,
-          "place_name": space.place_name
+          "place_name": space.place_name,
+          "location": space.location,
+          "description": space.description,
+          "price": space.price
      }
 
 if __name__ == '__main__':
-    app.run(debug=True, port=int(os.environ.get('PORT', 5002)))
+    app.run(debug=True, port=int(os.environ.get('PORT', 5003)))
 

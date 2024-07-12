@@ -1,11 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
+// import {flask, session} from "flask"
 // import Card from "../components/Card"
 
-function Me() {
+function Me({username}) {
+  // const [username, setUsername] = useState("fetching username..")
+  const navigateTo = useNavigate();
 
-const navigateTo = useNavigate();
+// const get_username = async () => {
+//   const get_username_response = await axios.get('http://127.0.0.1:5003/me')
+//   setUsername(get_username_response.data.username)
+// }
+
+
+// useEffect(() => {
+//   get_username()
+// }, [])
+
 
 const [formData, setFormData] = useState({
   place_name: "",
@@ -21,13 +33,13 @@ const handleUpdateFormData = (name, value) => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-      const response = await axios.post('http://127.0.0.1:5002/add-space', formData);
+      const response = await axios.post('http://127.0.0.1:5003/add-space', formData);
       console.log(response)
       if(response.status === 200){
         console.log(response)
         // console.log('Registration successful:', response.data);
 
-        navigateTo("/")
+        navigateTo("/spaces")
         // return <Redirect to="/login" />
       }
 
@@ -38,9 +50,13 @@ const handleSubmit = async (e) => {
 
   return (
     <div>
-      <div>My account</div>
+      <h1>My account</h1>
       <div>
-       <label>Hello... user</label>
+       <label>Hello!</label>
+       <br/>
+       <label>Create a new space here</label>
+       <span></span>
+       <br/>
 
 
 
@@ -88,13 +104,14 @@ const handleSubmit = async (e) => {
       </div>
       <button type="submit">Add Space</button>
       {/* {errorMessage && <p className="error-message">{errorMessage}</p>} */}
-      <div>
+      {/* <div>
         {" "}
         <p style={{ color: "blue" }} onClick={() => navigateTo("/register")}>
-          don&apos;t have account?{" "}
+        don&apos;t have account?{" "}
         </p>
-      </div>
+        </div> */}
     </form>
+        {" "}<button onClick={()=>navigateTo("/spaces")}>Back to Spaces</button>{" "}
       </div>
     </div>
   );
