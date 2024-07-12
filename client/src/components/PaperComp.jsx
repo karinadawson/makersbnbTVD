@@ -24,6 +24,9 @@ const PaperComp = () => {
   return (
     <>
       <h1>Spaces</h1>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+
+      
 
       {spacesState.map((space) => {
 
@@ -31,19 +34,22 @@ const PaperComp = () => {
 
         return (
           <>
-          <CardComponent
           
-          key={space.id}
-          title={place_name}
-          description={`${location} - ${description}`}
-          location={location}
-          price={price}
-          button1Text={"Book Now"}
-          button2Text={"Details"}
-          />
+
+          <CardComponent
+        
+        key={space.id}
+        title={place_name}
+        description={`${location} - ${description}`}
+        location={location}
+        price={price}
+        button1Text={"Book Now"}
+        button2Text={"Details"}
+        />
           </>
         );
       })}
+      </div>
                 <div>
           {" "}
           <button onClick={() => navigateTo("/me")}>
