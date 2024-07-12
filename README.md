@@ -1,6 +1,6 @@
 1. Clone this repo to your local PC by the following command:
 
-git clone https://github.com/petesteele98/makersbnbTVD
+git clone https://github.com/karinadawson/makersbnbTVD.git
 
 2. cd server
 
