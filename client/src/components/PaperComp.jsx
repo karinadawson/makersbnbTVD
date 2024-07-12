@@ -13,6 +13,7 @@ const PaperComp = () => {
   const fetchSpaces = async () => {
     const response = await axios.get("http://127.0.0.1:5003/spaces");
     const data = response.data;
+    console.log(data)
     setSpacesState(data);
   };
 
@@ -30,7 +31,7 @@ const PaperComp = () => {
 
       {spacesState.map((space) => {
 
-        const { place_name, location, description, price } = space;
+        const { place_name, location, description, price, image_url } = space;
 
         return (
           <>
@@ -43,6 +44,7 @@ const PaperComp = () => {
         description={`${location} - ${description}`}
         location={location}
         price={price}
+        image={image_url}
         button1Text={"Book Now"}
         button2Text={"Details"}
         />
@@ -52,8 +54,9 @@ const PaperComp = () => {
       </div>
                 <div>
           {" "}
+          {" "}<button onClick={()=>navigateTo("/")}>Back to Home</button>{" "}
           <button onClick={() => navigateTo("/me")}>
-            Me{" "}
+            My Account{" "}
           </button>
         </div>
     </>

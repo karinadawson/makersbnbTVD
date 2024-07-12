@@ -10,11 +10,12 @@ def get_uuid():
 
 class Space(db.Model):
 
-    def __init__(self, place_name, location, description, price):
+    def __init__(self, place_name, location, description, price, image_url):
         self.place_name = place_name
         self.location = location
         self.description = description
         self.price = price
+        self.image_url = image_url
 
 
     __tablename__ = "spaces"
@@ -24,9 +25,10 @@ class Space(db.Model):
     location = db.Column(db.Text, nullable=False)
     description = db.Column(db.Text, nullable=False)
     price = db.Column(db.Integer, nullable=False)
+    image_url = db.Column(db.Text, nullable=False)
 
     def __repr__(self):
-        return f"Space({self.place_name}, {self.location}, {self.description}, {self.price})"
+        return f"Space({self.place_name}, {self.location}, {self.description}, {self.price}, {self.image_url})"
     
 
 

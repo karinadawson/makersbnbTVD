@@ -24,6 +24,7 @@ const [formData, setFormData] = useState({
   location: "",
   description: "",
   price: 0,
+  image_url: ""
 });
 
 const handleUpdateFormData = (name, value) => {
@@ -50,11 +51,13 @@ const handleSubmit = async (e) => {
 
   return (
     <div>
-      <h1>My account</h1>
+      <h1>My Account</h1>
       <div>
        <label>Hello!</label>
        <br/>
-       <label>Create a new space here</label>
+       <label>Create a new space here:</label>
+       <span></span>
+       <br/>
        <span></span>
        <br/>
 
@@ -102,7 +105,18 @@ const handleSubmit = async (e) => {
           onChange={(e) => handleUpdateFormData("price", e.target.value)}
         />
       </div>
-      <button type="submit">Add Space</button>
+      <div className="form-group" style={{ display: "flex", flexDirection: "column" }}>
+        <label htmlFor="image_url">Photo URL (PNG, JPG, BMP)</label>
+        <input
+          type="image_url"
+          id="image_url"
+          name="image_url"
+          value={formData.image_url}
+          onChange={(e) => handleUpdateFormData("image_url", e.target.value)}
+        />
+      </div>
+      {" "}<button onClick={()=>navigateTo("/spaces")}>Back to Spaces</button>{" "}
+      <button type="submit" style={{ backgroundColor: "green"}}>Add Space</button>
       {/* {errorMessage && <p className="error-message">{errorMessage}</p>} */}
       {/* <div>
         {" "}
@@ -111,7 +125,7 @@ const handleSubmit = async (e) => {
         </p>
         </div> */}
     </form>
-        {" "}<button onClick={()=>navigateTo("/spaces")}>Back to Spaces</button>{" "}
+
       </div>
     </div>
   );

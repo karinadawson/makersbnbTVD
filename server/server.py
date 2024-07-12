@@ -111,6 +111,7 @@ def add_space():
         location = request.json['location']
         description = request.json['description']
         price = request.json['price']
+        image_url = request.json['image_url']
 
 
         # user_exists = User.query.filter_by(username=username).first() is not None
@@ -119,7 +120,7 @@ def add_space():
         #      return jsonify({"error": "User already exists"}), 409
         
         # hashed_password = bcrypt.generate_password_hash(password).decode("utf-8")
-        new_space = Space(place_name=place_name, location=location, description=description, price=price)
+        new_space = Space(place_name=place_name, location=location, description=description, price=price, image_url=image_url)
         # print(new_user)
 
         
@@ -151,7 +152,8 @@ def map_spaces(space):
           "place_name": space.place_name,
           "location": space.location,
           "description": space.description,
-          "price": space.price
+          "price": space.price,
+          "image_url": space.image_url
      }
 
 if __name__ == '__main__':

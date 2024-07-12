@@ -54,7 +54,8 @@ function Login() {
           onChange={(e) => handleUpdateFormData("password", e.target.value)}
         />
       </div>
-      <button type="submit">Login</button>
+        <button onClick={()=>{navigateTo("/")}}>Back to Home</button>
+      <button type="submit" style={{ backgroundColor: "green"}}>Login</button>
       {/* {errorMessage && <p className="error-message">{errorMessage}</p>} */}
       <div>
         {" "}
@@ -63,6 +64,7 @@ function Login() {
         </p>
       </div>
     </form>
+
     </>
   );
 }

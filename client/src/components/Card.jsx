@@ -7,10 +7,10 @@ import Typography from '@mui/material/Typography';
 
 const CardComponent = ({ title, description, image, price, button1Text, button2Text }) => {
   return (
-    <Card sx={{ maxWidth: 345 }} style={{ margin: "1em" }}>
+    <Card sx={{ maxWidth: 280 }} style={{ margin: "1em" }}>
       {image && ( // Conditionally render image if provided
         <CardMedia
-          sx={{ height: 140 }}
+          sx={{ height: 170 }}
           image={image}
           title={title} // Use title prop for image title
         />

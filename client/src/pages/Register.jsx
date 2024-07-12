@@ -69,7 +69,8 @@ const Register = () => {
             }
           />
         </div>
-        <button type="submit">Register</button>
+        <button onClick={()=>{navigateTo("/")}}>Back to Home</button>
+        <button type="submit" style={{ backgroundColor: "green"}}>Register</button>
         {/* {errorMessage && <p className="error-message">{errorMessage}</p>} */}
       </form>
 
