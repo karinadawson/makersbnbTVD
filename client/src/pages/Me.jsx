@@ -62,7 +62,7 @@ const handleSubmit = async (e) => {
 
 
        <form onSubmit={handleSubmit}>
-      <div className="form-group">
+      <div className="form-group" style={{ display: "flex", flexDirection: "column" }}>
         <label htmlFor="place_name">Place Name</label>
         <input
           type="text"
@@ -72,7 +72,7 @@ const handleSubmit = async (e) => {
           onChange={(e) => handleUpdateFormData("place_name", e.target.value)}
         />
       </div>
-      <div className="form-group">
+      <div className="form-group" style={{ display: "flex", flexDirection: "column" }}>
         <label htmlFor="location">Location</label>
         <input
           type="location"
@@ -82,7 +82,7 @@ const handleSubmit = async (e) => {
           onChange={(e) => handleUpdateFormData("location", e.target.value)}
         />
       </div>
-      <div className="form-group">
+      <div className="form-group" style={{ display: "flex", flexDirection: "column" }}>
         <label htmlFor="description">Description</label>
         <input
           type="description"
@@ -92,7 +92,7 @@ const handleSubmit = async (e) => {
           onChange={(e) => handleUpdateFormData("description", e.target.value)}
         />
       </div>
-      <div className="form-group">
+      <div className="form-group" style={{ display: "flex", flexDirection: "column" }}>
         <label htmlFor="price">Price Per Night</label>
         <input
           type="price"
